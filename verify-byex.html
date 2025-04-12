@@ -28,6 +28,7 @@
     .dropdown {
       position: relative;
       user-select: none;
+      width: 300px; /* 限制下拉菜单的宽度 */
     }
     .dropdown-toggle {
       display: flex;
@@ -39,6 +40,8 @@
       cursor: pointer;
       font-size: 16px;
       background-color: #f5f5f5;
+      width: 100%; /* 占满父容器（dropdown）的宽度 */
+      box-sizing: border-box;
     }
     .dropdown-toggle img {
       width: 20px;
@@ -55,7 +58,7 @@
       position: absolute;
       top: 100%;
       left: 0;
-      right: 0;
+      width: 300px; /* 与 dropdown-toggle 宽度一致 */
       background-color: #fff;
       border: 1px solid #ccc;
       border-radius: 8px;
@@ -340,4 +343,3 @@
   </script>
 </body>
 </html>
-  
