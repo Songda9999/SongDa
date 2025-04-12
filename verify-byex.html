@@ -4,31 +4,35 @@
   <meta charset="UTF-8">
   <title>佰易官方渠道验证</title>
   <style>
+    * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
-      background: #fff;
+      background: #f9f9f9;
       color: #1e1e1e;
     }
     .container {
-      max-width: 800px;
-      margin: 24px auto 40px;
-      padding: 20px;
+      max-width: 680px;
+      background: #fff;
+      margin: 24px auto;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
-    h1 {
-      font-size: 20px;
+    .title {
+      font-size: 18px;
       font-weight: 600;
-      margin: 0;
+      margin-bottom: 10px;
+      line-height: 1.4;
     }
     .description {
       font-size: 14px;
-      color: #666;
-      margin: 8px 0 20px;
+      color: #555;
+      margin-bottom: 24px;
     }
     label {
       display: block;
-      margin-top: 20px;
-      margin-bottom: 8px;
+      margin: 16px 0 6px;
       font-weight: 500;
       font-size: 14px;
     }
@@ -37,22 +41,23 @@
       user-select: none;
     }
     .dropdown-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      padding: 10px 14px;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       cursor: pointer;
-      font-size: 14px;
-      background-color: #f5f5f5;
     }
     .dropdown-toggle img {
       width: 20px;
       height: 20px;
       margin-right: 10px;
     }
-    .dropdown-toggle .dropdown-arrow {
+    .dropdown-arrow {
       transition: transform 0.3s ease;
     }
     .dropdown.open .dropdown-arrow {
@@ -63,89 +68,77 @@
       top: 100%;
       left: 0;
       right: 0;
-      background-color: #fff;
+      background: #fff;
       border: 1px solid #ccc;
       border-radius: 8px;
-      z-index: 1000;
-      margin-top: 4px;
-      max-height: 0;
+      margin-top: 6px;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+      display: none;
+      z-index: 10;
+      animation: fadeIn 0.2s ease-out;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
     }
-    .dropdown-menu.show {
-      max-height: 500px;
-      opacity: 1;
-      transform: translateY(0);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .option {
+      padding: 10px 16px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px 14px;
       cursor: pointer;
-    }
-    .option span.label {
-      display: flex;
-      align-items: center;
     }
     .option img {
       width: 20px;
       height: 20px;
       margin-right: 10px;
     }
-    .option .check {
-      font-size: 18px;
-      color: #111;
-      visibility: hidden;
-    }
-    .option.selected .check {
-      visibility: visible;
+    .option:hover {
+      background: #f5f5f5;
     }
     input {
-      box-sizing: border-box;
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 12px;
       font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
     button {
-      margin-top: 20px;
-      padding: 12px;
       width: 100%;
-      background-color: #000;
-      color: white;
+      height: 44px;
+      margin-top: 24px;
+      background: #000;
+      color: #fff;
       font-size: 14px;
+      font-weight: 600;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
     }
     button:disabled {
-      background-color: #cccccc;
+      background: #ccc;
       cursor: not-allowed;
+    }
+    .hint {
+      font-size: 12px;
+      color: #888;
+      margin-top: 8px;
     }
     .modal {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
       justify-content: center;
       align-items: center;
       z-index: 9999;
     }
     .modal-content {
-      position: relative;
       background: #fff;
-      border-radius: 12px;
       padding: 30px;
+      border-radius: 12px;
       width: 90%;
-      max-width: 500px;
+      max-width: 460px;
       text-align: center;
       animation: fadeInUp 0.3s ease;
     }
@@ -158,44 +151,40 @@
       margin-bottom: 20px;
     }
     .modal-content h2 {
+      font-size: 18px;
       margin-bottom: 12px;
     }
+    .modal-content input {
+      padding: 10px;
+      font-size: 14px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
     .modal-content p {
-      margin: 6px 0;
       font-size: 12px;
-      color: #777;
+      color: #666;
+      margin: 4px 0;
     }
     .modal-content .danger {
       color: #d20000;
     }
-    .modal-close-x {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
-      cursor: pointer;
-      color: #999;
-    }
-    .modal-close-x:hover {
-      color: #000;
-    }
     .modal-close {
       margin-top: 20px;
+      width: 100%;
+      padding: 10px;
       background: #000;
       color: #fff;
-      padding: 10px;
       border: none;
-      width: 100%;
-      font-size: 14px;
       border-radius: 8px;
+      font-size: 14px;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>佰易官方渠道验证</h1>
-    <p class="description">为保护您免受诈骗，您可以使用此页面验证渠道的真实性。</p>
+    <div class="title">佰易官方渠道验证</div>
+    <div class="description">为保护您免受诈骗，您可以使用此页面验证 Telegram、Twitter、Discord 或网站渠道的真实性。</div>
 
     <label>渠道</label>
     <div class="dropdown" id="channelDropdown">
@@ -207,41 +196,36 @@
         <span class="dropdown-arrow">⌄</span>
       </div>
       <div class="dropdown-menu" id="dropdownMenu">
-        <div class="option" onclick="selectChannel('website', '网站')" id="opt-website">
-          <span class="label"><img src="https://cdn-icons-png.flaticon.com/128/94/94763.png">网站</span>
-          <span class="check">✔</span>
+        <div class="option" onclick="selectChannel('website', '网站')">
+          <img src="https://cdn-icons-png.flaticon.com/128/94/94763.png"> 网站
         </div>
-        <div class="option" onclick="selectChannel('telegram', 'Telegram')" id="opt-telegram">
-          <span class="label"><img src="https://cdn-icons-png.flaticon.com/128/5891/5891945.png">Telegram</span>
-          <span class="check">✔</span>
+        <div class="option" onclick="selectChannel('telegram', 'Telegram')">
+          <img src="https://cdn-icons-png.flaticon.com/128/5891/5891945.png"> Telegram
         </div>
-        <div class="option" onclick="selectChannel('twitter', 'Twitter')" id="opt-twitter">
-          <span class="label"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png">Twitter</span>
-          <span class="check">✔</span>
+        <div class="option" onclick="selectChannel('twitter', 'Twitter')">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"> Twitter
         </div>
-        <div class="option" onclick="selectChannel('discord', 'Discord')" id="opt-discord">
-          <span class="label"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">Discord</span>
-          <span class="check">✔</span>
+        <div class="option" onclick="selectChannel('discord', 'Discord')">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png"> Discord
         </div>
       </div>
     </div>
 
     <label>渠道信息</label>
-    <input id="inputValue" type="text" placeholder="">
-    <p style="font-size: 12px; color: #888;">注意区分大小写字母，确保与您要验证的渠道中的大小写完全一致。</p>
+    <input id="inputValue" type="text" placeholder="请输入网站地址，例如：https://byex.com">
+    <div class="hint">注意区分大小写字母，确保与您要验证的渠道中的大小写完全一致。</div>
     <button id="verifyBtn" onclick="submitCheck()" disabled>去验证</button>
   </div>
 
   <div class="modal" id="resultModal">
     <div class="modal-content">
-      <span class="modal-close-x" onclick="closeModal()">×</span>
-      <img id="modalIcon" src="" alt="result">
+      <img id="modalIcon" src="" alt="">
       <h2 id="modalTitle"></h2>
-      <input id="modalInput" readonly style="width: 100%; padding: 8px; font-size: 14px;">
-      <p id="modalDesc" class="danger"></p>
+      <input id="modalInput" readonly>
+      <p id="modalDesc" class=""></p>
       <p>・请确保您所输入的信息准确无误</p>
       <p>・非大陆手机号请添加区号，例如香港为 +852</p>
-      <p>・微信等仅支持帐号搜索</p>
+      <p>・微信仅支持帐号搜索</p>
       <button class="modal-close" onclick="closeModal()">我知道了</button>
     </div>
   </div>
@@ -276,21 +260,18 @@
     };
 
     function toggleDropdown() {
-      dropdownMenu.classList.toggle("show");
+      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
       channelDropdown.classList.toggle("open");
     }
 
-    function selectChannel(value, label) {
-      selectedIcon.src = platformIcons[value];
+    function selectChannel(type, label) {
+      selectedIcon.src = platformIcons[type];
       selectedText.textContent = label;
-      inputValue.placeholder = placeholders[value];
-      inputValue.value = "";
+      inputValue.placeholder = placeholders[type];
+      inputValue.value = '';
       verifyBtn.disabled = true;
-      dropdownMenu.classList.remove("show");
+      dropdownMenu.style.display = "none";
       channelDropdown.classList.remove("open");
-
-      document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-      document.getElementById(`opt-${value}`).classList.add('selected');
     }
 
     inputValue.addEventListener("input", function () {
@@ -298,53 +279,43 @@
     });
 
     inputValue.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" && !verifyBtn.disabled) {
-        submitCheck();
-      }
+      if (e.key === "Enter" && !verifyBtn.disabled) submitCheck();
     });
 
     function submitCheck() {
-      const link = inputValue.value.trim().toLowerCase();
-      const selectedPlatform = Object.keys(platformIcons).find(key => selectedIcon.src.includes(platformIcons[key]));
-      const isOfficial = officialLinks[selectedPlatform].some(item => link.includes(item.toLowerCase()));
+      const value = inputValue.value.trim().toLowerCase();
+      const platform = Object.keys(platformIcons).find(key => selectedIcon.src.includes(platformIcons[key]));
+      const isOfficial = officialLinks[platform].some(item => value.includes(item.toLowerCase()));
 
-      const modal = document.getElementById("resultModal");
-      const modalIcon = document.getElementById("modalIcon");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalInput = document.getElementById("modalInput");
-      const modalDesc = document.getElementById("modalDesc");
-
-      modalInput.value = link;
-
-      if (isOfficial) {
-        modalIcon.src = "https://cdn-icons-png.flaticon.com/512/845/845646.png";
-        modalTitle.innerText = "这是官方频道";
-        modalDesc.className = "";
-        modalDesc.innerText = "您输入的链接为佰易官方渠道。";
-      } else {
-        modalIcon.src = "https://cdn-icons-png.flaticon.com/512/463/463612.png";
-        modalTitle.innerText = "非佰易官方渠道";
-        modalDesc.className = "danger";
-        modalDesc.innerText = "为确保您免受诈骗滋扰，请仅与官方渠道互动。";
-      }
-
-      modal.style.display = "flex";
+      document.getElementById("modalIcon").src = isOfficial
+        ? "https://cdn-icons-png.flaticon.com/512/845/845646.png"
+        : "https://cdn-icons-png.flaticon.com/512/463/463612.png";
+      document.getElementById("modalTitle").innerText = isOfficial
+        ? "这是官方频道"
+        : "非佰易官方渠道";
+      document.getElementById("modalDesc").innerText = isOfficial
+        ? "您输入的链接为佰易官方渠道。"
+        : "为确保您免受诈骗滋扰，请仅与官方渠道互动。";
+      document.getElementById("modalDesc").className = isOfficial ? "" : "danger";
+      document.getElementById("modalInput").value = value;
+      document.getElementById("resultModal").style.display = "flex";
     }
 
     function closeModal() {
-      document.getElementById('resultModal').style.display = 'none';
+      document.getElementById("resultModal").style.display = "none";
     }
 
-    window.addEventListener("click", function (e) {
-      if (!channelDropdown.contains(e.target)) {
-        dropdownMenu.classList.remove("show");
+    window.onclick = function(e) {
+      if (!document.getElementById("channelDropdown").contains(e.target)) {
+        dropdownMenu.style.display = "none";
         channelDropdown.classList.remove("open");
       }
-    });
+    }
 
     window.onload = function () {
       selectChannel("website", "网站");
-    }
+      document.getElementById("resultModal").style.display = "none";
+    };
   </script>
 </body>
 </html>
