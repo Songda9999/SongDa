@@ -212,7 +212,7 @@
     </div>
 
     <label>渠道信息</label>
-    <input id="inputValue" type="text" placeholder="请输入网站地址，例如：https://byex.com">
+    <input id="inputValue" type="text" placeholder="请输入网站地址链接">
     <div class="hint">注意区分大小写字母，确保与您要验证的渠道中的大小写完全一致。</div>
     <button id="verifyBtn" onclick="submitCheck()" disabled>去验证</button>
   </div>
@@ -246,9 +246,9 @@
     };
 
     const placeholders = {
-      website: "请输入网站地址链接，例如：https://byex.com",
-      telegram: "请输入 Telegram 链接，例如：https://t.me/byexofficial",
-      twitter: "请输入 Twitter 链接，例如：https://twitter.com/byexexchange",
+      website: "请输入网站地址链接",
+      telegram: "请输入 username、个人主页地址链接或群链接",
+      twitter: "请输入用户名或个人主页地址链接",
       discord: "请输入 Discord 链接，例如：https://discord.gg/byex"
     };
 
