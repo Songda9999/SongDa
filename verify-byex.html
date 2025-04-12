@@ -190,23 +190,19 @@
       const channelDropdown = document.getElementById("channelDropdown");
 
       const platformIcons = {
-        website: "https://cdn-icons-png.flaticon.com/128/94/94763.png",
-        telegram: "https://cdn-icons-png.flaticon.com/128/5891/5891945.png",
-        twitter: "https://cdn-icons-png.flaticon.com/512/733/733579.png",
-        discord: "https://cdn-icons-png.flaticon.com/512/2111/2111370.png",
-        x: "https://cdn-icons-png.flaticon.com/512/5968/5968776.png",
-        youtube: "https://cdn-icons-png.flaticon.com/512/1384/1384060.png",
-        facebook: "https://cdn-icons-png.flaticon.com/512/145/145802.png",
-        tiktok: "https://cdn-icons-png.flaticon.com/512/3046/3046121.png",
-        instagram: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png",
-        email: "https://cdn-icons-png.flaticon.com/512/732/732200.png"
+        website: "https://cdn-icons-png.flaticon.com/128/3178/3178162.png",
+        telegram: "https://cdn-icons-png.flaticon.com/128/4902/4902512.png",
+        x: "https://cdn-icons-png.flaticon.com/128/5969/5969020.png",
+        youtube: "https://cdn-icons-png.flaticon.com/128/1384/1384028.png",
+        facebook: "https://cdn-icons-png.flaticon.com/128/2175/2175193.png",
+        tiktok: "https://cdn-icons-png.flaticon.com/128/3669/3669950.png",
+        instagram: "https://cdn-icons-png.flaticon.com/128/3670/3670274.png",
+        email: "https://cdn-icons-png.flaticon.com/128/3178/3178158.png"
       };
 
       const placeholders = {
-        website: "请输入网站地址链接",
+        website: "请输入网站地址链接",  
         telegram: "请输入 username、个人主页地址链接或群链接",
-        twitter: "请输入 Twitter 链接",
-        discord: "请输入 Discord 链接",
         x: "请输入用户名或个人主页地址链接",
         youtube: "请输入用户名或频道网页链接",
         facebook: "请输入个人主页完整地址链接",
@@ -216,30 +212,41 @@
       };
 
       const officialLinks = {
-        website: ["www.100ex.com", "www.byex.com"],
+        website: ["www.100ex.com", "www.byex.com", "100ex.com", "byex.com"],
         telegram: [
-          "t.me/BYEX_MANDARIN", "t.me/BYEX_ZX", "t.me/BYEX_Official",
-          "t.me/BYEX_CN", "t.me/BYEX_GG", "t.me/BYEXvideo",
-          "t.me/BYEX_KF01", "t.me/BYEX_KF3", "t.me/BYEX_KF2"
+          "https://t.me/BYEX_MANDARIN", "https://t.me/BYEX_ZX", "https://t.me/BYEX_Official",
+          "https://t.me/BYEX_CN", "https://t.me/BYEX_GG", "https://t.me/BYEXvideo",
+          "https://t.me/BYEX_KF01", "https://t.me/BYEX_KF3", "https://t.me/BYEX_KF2", "@BYEX_MANDARIN","@BYEX_ZX","@BYEX_Official","@BYEX_CN","@BYEX_GG","@BYEXvideo","@BYEX_KF01","@BYEX_KF2","@BYEX_KF3",
         ],
-        twitter: ["twitter.com/byexexchange"],
-        discord: ["discord.gg/byex"],
-        x: ["x.com/baiyi_byex?s=21", "x.com/100EXOfficial"],
-        youtube: ["www.youtube.com/@BYEXCN", "www.youtube.com/@BYEXOfficial"],
+        x: ["https://x.com/baiyi_byex?s=21", "https://x.com/100EXOfficial"],
+        youtube: ["https://www.youtube.com/@BYEXCN", "https://www.youtube.com/@BYEXOfficial"],
         facebook: [
-          "www.facebook.com/baiyi100ex.official?mibextid=LQQJ4d",
-          "www.facebook.com/share/1HZ4dVp6Px/?mibextid=wwXIfr"
+          "https://www.facebook.com/baiyi100ex.official?mibextid=LQQJ4d",
+          "https://www.facebook.com/share/1HZ4dVp6Px/?mibextid=wwXIfr"
         ],
-        tiktok: ["www.tiktok.com/@byexchange?_t=ZS-8vT1Su2wyHo&_r=1"],
-        instagram: ["www.instagram.com/byex_exchange?igsh=MTk2bnN0YTJ3dGl4dw%3D%3D&utm_source=qr"],
+        tiktok: ["https://www.tiktok.com/@byexchange?_t=ZS-8vT1Su2wyHo&_r=1", "@byexexchange"],
+        instagram: ["https://www.instagram.com/byex_exchange?igsh=MTk2bnN0YTJ3dGl4dw%3D%3D&utm_source=qr"],
         email: ["support@100ex.com"]
       };
 
-      const dropdownItems = Object.entries(platformIcons).map(([key, icon]) => `
-        <div class="option" onclick="selectChannel('${key}', '${key.charAt(0).toUpperCase() + key.slice(1)}')">
-          <img src="${icon}"> ${key.charAt(0).toUpperCase() + key.slice(1)}
-        </div>
-      `).join('');
+      const channelLabels = {
+  website: "网站",
+  telegram: "Telegram",
+  twitter: "Twitter",
+  discord: "Discord",
+  x: "X",
+  youtube: "YouTube",
+  facebook: "Facebook",
+  tiktok: "TikTok",
+  instagram: "Instagram",
+  email: "邮箱"
+};
+
+const dropdownItems = Object.entries(platformIcons).map(([key, icon]) => `
+  <div class="option" onclick="selectChannel('${key}', '${channelLabels[key]}')">
+    <img src="${icon}"> ${channelLabels[key]}
+  </div>
+`).join('');
 
       dropdownMenu.innerHTML = dropdownItems;
 
