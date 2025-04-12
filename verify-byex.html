@@ -5,25 +5,32 @@
   <title>佰易官方渠道验证</title>
   <style>
     body {
-      font-family: "微软雅黑", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       background: #fff;
       color: #1e1e1e;
     }
     .container {
       max-width: 800px;
-      margin: 50px auto;
+      margin: 24px auto 40px;
       padding: 20px;
     }
     h1 {
-      font-size: 32px;
-      font-weight: bold;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .description {
+      font-size: 14px;
+      color: #666;
+      margin: 8px 0 20px;
     }
     label {
       display: block;
       margin-top: 20px;
       margin-bottom: 8px;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 14px;
     }
     .dropdown {
       position: relative;
@@ -37,7 +44,7 @@
       border-radius: 8px;
       padding: 10px 14px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px;
       background-color: #f5f5f5;
     }
     .dropdown-toggle img {
@@ -68,7 +75,7 @@
       transition: all 0.3s ease;
       box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
     }
-    .dropdown-menu.show { 
+    .dropdown-menu.show {
       max-height: 500px;
       opacity: 1;
       transform: translateY(0);
@@ -102,8 +109,8 @@
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
+      border-radius: 6px;
+      font-size: 14px;
     }
     button {
       margin-top: 20px;
@@ -111,9 +118,9 @@
       width: 100%;
       background-color: #000;
       color: white;
-      font-size: 16px;
+      font-size: 14px;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
     }
     button:disabled {
@@ -155,6 +162,7 @@
     }
     .modal-content p {
       margin: 6px 0;
+      font-size: 12px;
       color: #777;
     }
     .modal-content .danger {
@@ -178,7 +186,7 @@
       padding: 10px;
       border: none;
       width: 100%;
-      font-size: 16px;
+      font-size: 14px;
       border-radius: 8px;
       cursor: pointer;
     }
@@ -220,7 +228,7 @@
 
     <label>渠道信息</label>
     <input id="inputValue" type="text" placeholder="">
-    <p style="font-size: 14px; color: #888;">注意区分大小写字母，确保与您要验证的渠道中的大小写完全一致。</p>
+    <p style="font-size: 12px; color: #888;">注意区分大小写字母，确保与您要验证的渠道中的大小写完全一致。</p>
     <button id="verifyBtn" onclick="submitCheck()" disabled>去验证</button>
   </div>
 
@@ -233,7 +241,7 @@
       <p id="modalDesc" class="danger"></p>
       <p>・请确保您所输入的信息准确无误</p>
       <p>・非大陆手机号请添加区号，例如香港为 +852</p>
-      <p>・微信等仅支持帐号号搜索</p>
+      <p>・微信等仅支持帐号搜索</p>
       <button class="modal-close" onclick="closeModal()">我知道了</button>
     </div>
   </div>
